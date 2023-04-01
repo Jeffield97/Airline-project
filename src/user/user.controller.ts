@@ -9,10 +9,11 @@ import {
 } from '@nestjs/common';
 import { UserDTO } from './dto/user.dto';
 import { UserService } from './user.service';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Users')
 @Controller('user')
 export class UserController {
-  constructor(private readonly userServices: UserService) {}
+  constructor(private readonly userServices: UserService) { }
   @Post()
   create(@Body() userDTO: UserDTO) {
     return this.userServices.create(userDTO);
